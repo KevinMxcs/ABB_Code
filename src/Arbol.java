@@ -17,7 +17,7 @@ public class Arbol {
                 this.raiz.dato = valor;
                 this.raiz.izquierdo = null;
                 this.raiz.derecho = null;
-            }	else insertarNodo(valor, this.raiz);
+            }	else insertarNodo(valor, getRaiz());
         }
         public void insertarNodo(int valor, Nodo nodoRef){
 			if (valor <= nodoRef.dato) {
@@ -71,6 +71,7 @@ public class Arbol {
         // Procesar el subárbol izquierdo
         imprArbolUtil(nodo.izquierdo, espacio);
     }
+    
     public Nodo buscar(int valor) {
         return buscarN(raiz, valor);
     }
@@ -90,6 +91,7 @@ public class Arbol {
             return buscarN(nodo.derecho, valor);
         }
     }
+    
     public void recorridoPreorden() {
         recorridoPreorden(raiz);
     }

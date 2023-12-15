@@ -3,6 +3,7 @@ public class App {
         Arbol abb = new Arbol();
 
 		Nodo raizArbolABB = abb.getRaiz();
+		abb.esVacio();
 		
 		//25, 8, 29, 38, 27
 		abb.insertarValor(25);
@@ -16,5 +17,8 @@ public class App {
         abb.recorridoInorden();
 		System.out.println("\nRecorrido en postorden:");
         abb.recorridoPostorden();
+		System.out.println("\nImprimiendo arbol en horizontal");
+		abb.impArbol();
+		System.out.println(abb.buscar(29));
     }
 }
