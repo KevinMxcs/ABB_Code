@@ -140,6 +140,55 @@ public class Arbol {
             System.out.print(nodo.dato + " ");
         }
     }
-
+    //Agregado: Metodo para eliminar un nodo
+    public void eliminarUnNodo(int data)throws Exception{
+        raiz = eliminarNodo(raiz,data);
+    }
+    //Metodo privado para eliminar un nodo
+    protected Nodo  eliminarNodo(Nodo ref,int data)throws Exception{
+        //Mandar mensaje cuando no se encuentre nodo
+        if (ref == null){
+            throw new Exception("No se encontro el nodo");
+        }//procesando el arbol por el lado izquierdo
+        else if(data < ref.dato){
+            Nodo izq = eliminarNodo(ref.izquierdo, data);
+            ref.izquierdo = izq;
+        }//Procesando el arbol por el lado derecho
+        else if (data > ref.dato){
+            Nodo der = eliminarNodo(ref.derecho, data);
+            ref.derecho = der;
+        }else{
+            Nodo temp = ref;
+            //cuando no tiene hijo derecho
+            if (temp.derecho == null){
+                ref =temp.izquierdo;
+            }//cuando no tiene hijo izquierdo
+            else if (temp.izquierdo == null){
+                ref = temp.derecho;
+            }//en el caso de tener dos hijos
+            else{
+                temp = procesarNodo(temp);
+            }
+            temp = null;
+        }
+        return ref;
+    }
+    //Metodo para el metodo eliminar nodo
+    protected Nodo procesarNodo(Nodo temp){
+        Nodo tem = temp;
+        Nodo tem2 = tem.izquierdo;
+        while (tem2.derecho != null){
+            tem = tem2;
+            tem2 = tem2.derecho;
+        }
+        tem.dato = tem2.dato;
+        if (tem == temp){
+            tem.izquierdo = tem2.izquierdo;
+        }else{
+            tem.derecho = tem2.izquierdo;
+        }
+        return tem2;
+    }
+   
 } 
 

@@ -20,5 +20,10 @@ public class App {
 		System.out.println("\nImprimiendo arbol en horizontal");
 		abb.impArbol();
 		System.out.println(abb.buscar(29));
+		try{
+			abb.eliminarUnNodo(29);
+		}catch(Exception e){
+		}
+		abb.impArbol();
     }
 }
